@@ -1,51 +1,8 @@
-# 1. Import Library
-import pandas as pd 
-import matplotlib.pyplot as plt
-import seaborn as sns
+Project: Examining Air Quality in Indian Cities
 
-# 2. Air Quality Data for Indian Cities (Replace with real data from CPCB)
-data = {
-'city':['Delhi','Mumbai','Kolkata','Chennai','Banglore','Hyderabad','Pune','Ahemdabad','Jaipur','Lucknow'],
- 'data' : pd.to_datetime(['2023-01-15','2023-01-15','2023-01-15','2023-01-15','2023-01-15','2023-01-15','2023-01-15','2023-01-15','2023-01-15','2023-01-15']),
- ‘pm2.5’ : [250,120,180,90.70,150,110,160,200,140],
- 'no2'  : [80,50,60,40,30,70,45,65,90,55],	
- 'so2' : [30,20,25,15,10,25,18,28,35,22],	
-}
-air_quality_df = pd.DataFrame(data)
-
-# 3. Basic Data Exploration
-print(air_quality_df.head()) # Get the view of first few rows
-print(air_quality_df.tail()) # Get the view of last few rows
-print(air_quality_df.info()) # Get the summary of the data
-print(air_quality_df.describe()) # Get the statistical summary of the data
-print(air_quality_df.isnull().sum()) # To check any missing value
-
-# 4. PM2.5 Analysis 
-average_pm2.5 = air_quality_df['pm2.5'].mean()
-print("\nAverage PM2.5 across cities:", average_pm2.5)
-
-# 5. City with Highest NO2 Levels
-city_highest_no2 = air_quality_df.loc[air_quality_df['no2'].idxmax()]['city']
-print("\nCity with Highest NO2 Levels:", city_highest_no2)
-
-# 6. Correlation between Pollution
-correlation_pm2.5_no2 = air_quality_df['pm2.5'].corr(air_quality_df['no2'])
-print("\nCorrelation between PM2.5 and NO2:", correlation_pm2.5_no2)
-
-# 1. Bar Chart of pm2.5 Leveles by city
-plt.figure(figsize=(12,6))
-sns.barplot(x='city', y='pm25', data=air_quality_df)
-plt.title('PM2.5 Levels by City')
-plt.xlabel('City')
-plt.ylabel('PM2.5 Level')
-plt.xticks(rotation=45)
-plt.show()
-
-# 2. Scatter Plot of PM2.5 vs.NO2
-plt.figure(figsize=(10,6))
-sns.scatterplot(x='pm25', y='no2', data=air_quality_df,hue='city')
-plt.title('PM2.5 vs. NO2 Levels')
-plt.xlabel('PM2.5')
-plt.ylabel('NO2')
-plt.show()
-
+Data Source: Air pollution is a significant concern in India. Central Pollution Control Board (CPCB) website or platforms like OpenAQ.
+EDA Focus:
+1. Analyze trends in air pollutants (PM2.5, NO2, SO2) over time.
+2. Compare air quality across different cities.
+3. Identify seasonal patterns and potential correlations with weather data.
+4. Visualize pollution levels using line graphs, heatmaps, and time series plots.
